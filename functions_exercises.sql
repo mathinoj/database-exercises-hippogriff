@@ -22,9 +22,12 @@ year(hire_date) between 1990 and 1999
 and month(birth_date) = 12
 and day(birth_date) = 25 order by hire_date desc;
 
+
 # For your query of employees born on Christmas and hired in the 90s, use datediff() to find how many days they have been working at the company (Hint: You might also need to use now() or curdate())
-# select concat(first_name, ' ',last_name), hire_date
-# from employees where
-# year(hire_date) between 1990 and 1999
-# and month(birth_date) = 12
-# and day(birth_date) = 25 order by hire_date desc;
+# select concat(first_name, ' ',last_name), datediff(year,
+# hire_date, now(hire_date))
+select hire_date, datediff(now(), hire_date) as daysSince
+from employees where
+year(hire_date) between 1990 and 1999
+and month(birth_date) = 12
+and day(birth_date) = 25 order by hire_date desc;
