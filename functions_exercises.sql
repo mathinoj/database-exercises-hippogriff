@@ -7,8 +7,24 @@ select concat(first_name, ' ' ,last_name) from employees where first_name like '
 # SELECT first_name, last_name FROM employees where first_name in ('Irena', 'Vidya', 'Maya') order by last_name;
 select * from employees where month(birth_date) = 12 and day(birth_date) = 25;
 
--- Update your queries for employees with 'e' in their last name to sort the results by their employee number. Make sure the employee numbers are in the correct order.
-select last_name, emp_no from employees where last_name like '%e%' order by emp_no;
+# Find all employees hired in the 90s and born on Christmas — 362 rows.
+select hire_date, birth_date from employees where
+    year(hire_date) between 1990 and 1999
+    and month(birth_date) = 12
+    and day(birth_date) = 25;
 
-# Now reverse the sort order for both queries and compare results.
-select last_name, emp_no from employees where last_name like '%e%' order by emp_no desc;
+
+
+-- Change the query for employees hired in the 90s and born on Christmas such that the first result is the oldest employee who was hired last. It should be Khun Bernini.
+select concat(first_name, ' ',last_name), hire_date
+from employees where
+year(hire_date) between 1990 and 1999
+and month(birth_date) = 12
+and day(birth_date) = 25 order by hire_date desc;
+
+# For your query of employees born on Christmas and hired in the 90s, use datediff() to find how many days they have been working at the company (Hint: You might also need to use now() or curdate())
+# select concat(first_name, ' ',last_name), hire_date
+# from employees where
+# year(hire_date) between 1990 and 1999
+# and month(birth_date) = 12
+# and day(birth_date) = 25 order by hire_date desc;
