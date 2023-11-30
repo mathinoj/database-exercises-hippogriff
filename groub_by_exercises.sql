@@ -10,3 +10,7 @@ where last_name like 'e%' and last_name like '%e' group by last_name;
 # Update your previous query to now find unique combinations of first and last name where the last name starts and ends with 'E'. You should get 846 rows.
 select unique first_name, last_name from employees
 where last_name like 'e%' and last_name like '%e';
+
+# Find the unique last names with a 'q' but not 'qu'. Your results should be:
+select unique last_name from employees
+where last_name like '%q%' and last_name not like '%qu%';
